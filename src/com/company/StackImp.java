@@ -1,62 +1,59 @@
 package com.company;
+
 import java.util.*;
 
-public class StackImp<E> implements Stack<E> {
-    @Override
-    public boolean equals(Object obj) {
-        if(obj==this){
-         return true;
-        }
-        else if(!(obj instanceof StackImp)){
-            return false;
-        }
-        StackImp stackImp = (StackImp) obj;
-        return stackImp.equals(this);
+public class StackImp implements Stack {
+
+    public static void main(String[] args) throws StackException {
+        StackImp stackImp = new StackImp(5);
+        stackImp.push("E1");
+        stackImp.push("E2");
+        stackImp.push("E3");
+        stackImp.push("E4");
+        stackImp.push("E5");
+
+       // stackImp.pop("E2");
+        stackImp.print();
     }
+    private ArrayList arrayList = new ArrayList();
+    //private static final int CAPACITY = 5;
+    private int top = 0;
 
-    private Object[] elements;
-    private int size = 0;
-    private static final int DEFAULT_CAPACITY = 5;
-
-
-    public StackImp(){
-        elements = (E[])new Object[DEFAULT_CAPACITY];
-    }
-
-    @Override
-    public void push(E o) {
-        elements[size++] = o;
+    StackImp(int capacity){
+        this.arrayList = new ArrayList(capacity);
 
     }
 
     @Override
-    public E pop()  {
-
-        if (size==0) {
-            throw new EmptyStackException();
-
+    public void push(Object o) throws StackException {
+        if (top==arrayList.size()-1){
+            throw new StackException("is full");
         }
-        E result = (E)elements[-size];
-        elements[size] = null;
+        ArrayList list = this.arrayList;
 
-        return result;
 
+        arrayList.add(o);
+    }
+
+    @Override
+    public Object pop(Object o) throws StackException {
+        if (arrayList.isEmpty()){
+            throw new StackException("Stack is empty");
+        }
+        arrayList.remove(o);
+        return null;
     }
 
     @Override
     public void clear() {
-
+        arrayList.clear();
     }
 
-
+    @Override
     public void print() {
-        for (Object str : elements){
-            System.out.println(str);
+
+        for (Object obj : arrayList){
+            System.out.print(obj+" ");
         }
     }
-    public boolean isEmpty(){
-        return size ==0;
-    }
-
-
 }

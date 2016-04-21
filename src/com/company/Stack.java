@@ -4,11 +4,11 @@ import java.util.*;
 import java.util.EmptyStackException;
 import java.util.Objects;
 
-public interface Stack<E>  {
+public interface Stack  {
 
-    void push(E o) throws StackException;
+    void push(Object o) throws StackException;
 
-    E pop() throws  StackException;
+    Object pop(Object o) throws  StackException;
 
     void clear();
 
@@ -17,10 +17,9 @@ public interface Stack<E>  {
 }
 class StackException extends Exception {
 
-    EmptyStackException exception = new EmptyStackException();
-
-
-    public Exception getException() {
-        return exception;
+    public StackException(String message){
+        super(message);
     }
+
+
 }
