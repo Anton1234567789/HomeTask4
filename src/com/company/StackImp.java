@@ -1,6 +1,18 @@
+package com.company;
 import java.util.*;
 
 public class StackImp<E> implements Stack<E> {
+    @Override
+    public boolean equals(Object obj) {
+        if(obj==this){
+         return true;
+        }
+        else if(!(obj instanceof StackImp)){
+            return false;
+        }
+        StackImp stackImp = (StackImp) obj;
+        return stackImp.equals(this);
+    }
 
     private Object[] elements;
     private int size = 0;
