@@ -11,12 +11,15 @@ public class StackImp implements Stack {
         stackImp.push("E3");
         stackImp.push("E4");
         stackImp.push("E5");
+        stackImp.push("E6");
+
+
 
        // stackImp.pop("E2");
         stackImp.print();
     }
     private ArrayList arrayList = new ArrayList();
-    //private static final int CAPACITY = 5;
+
     private int top = 0;
 
     StackImp(int capacity){
@@ -26,7 +29,7 @@ public class StackImp implements Stack {
 
     @Override
     public void push(Object o) throws StackException {
-        if (top==arrayList.size()-1){
+        if (arrayList.size()+1==arrayList.size()){
             throw new StackException("is full");
         }
         ArrayList list = this.arrayList;
