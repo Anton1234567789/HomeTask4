@@ -11,12 +11,14 @@ public class StackImp implements Stack {
         stackImp.push("E3");
         stackImp.push("E4");
         stackImp.push("E5");
-        stackImp.push("E6");
+        //stackImp.push("E6");
 
 
-        //stackImp.pop();
+      //  stackImp.pop();
+       // stackImp.pop();
         //stackImp.clear();
         stackImp.print();
+
     }
 
 
@@ -27,14 +29,14 @@ public class StackImp implements Stack {
     public StackImp(int capacity){
         ints = new Object[capacity];
 
-        top=-1;
+        //top=-1;
 
     }
 
     @Override
     public void push(Object o) throws StackException {
         try {
-            ints[++top]=o;
+            ints[top++]=o;
 
         }catch (Exception e){
             e.printStackTrace();
@@ -46,8 +48,10 @@ public class StackImp implements Stack {
         if (ints.length==0){
             throw new StackException("Stack is empty");
         }
-
-        return ints;
+        top--;
+        Object obj = ints[top];
+        ints[top]="_";
+        return obj;
     }
 
     @Override
