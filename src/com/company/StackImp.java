@@ -14,48 +14,53 @@ public class StackImp implements Stack {
         stackImp.push("E6");
 
 
-
-       // stackImp.pop("E2");
+        //stackImp.pop();
+        //stackImp.clear();
         stackImp.print();
     }
-    private ArrayList arrayList = new ArrayList();
 
-    private int top = 0;
 
-    StackImp(int capacity){
-        this.arrayList = new ArrayList(capacity);
+    private Object[] ints;
+
+    private int top;
+
+    public StackImp(int capacity){
+        ints = new Object[capacity];
+
+        top=-1;
 
     }
 
     @Override
     public void push(Object o) throws StackException {
-        if (arrayList.size()+1==arrayList.size()){
-            throw new StackException("is full");
+        try {
+            ints[++top]=o;
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        ArrayList list = this.arrayList;
-
-
-        arrayList.add(o);
     }
 
     @Override
-    public Object pop(Object o) throws StackException {
-        if (arrayList.isEmpty()){
+    public Object pop() throws StackException {
+        if (ints.length==0){
             throw new StackException("Stack is empty");
         }
-        arrayList.remove(o);
-        return null;
+
+        return ints;
     }
 
     @Override
     public void clear() {
-        arrayList.clear();
+        for(int i =0; i<ints.length;i++){
+            ints[i]="_";
+        }
     }
 
     @Override
     public void print() {
 
-        for (Object obj : arrayList){
+        for (Object obj : ints){
             System.out.print(obj+" ");
         }
     }

@@ -8,7 +8,7 @@ public interface Stack  {
 
     void push(Object o) throws StackException;
 
-    Object pop(Object o) throws  StackException;
+    Object pop() throws  StackException;
 
     void clear();
 
