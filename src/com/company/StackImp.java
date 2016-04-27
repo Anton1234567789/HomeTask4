@@ -3,24 +3,27 @@ package com.company;
 import java.util.*;
 
 public class StackImp implements Stack {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {return true;}
 
-    public static void main(String[] args) throws StackException {
-        StackImp stackImp = new StackImp(5);
-        stackImp.push("E1");
-        stackImp.push("E2");
-        stackImp.push("E3");
-        stackImp.push("E4");
-        stackImp.push("E5");
-        //stackImp.push("E6");
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
+        StackImp stackImp = (StackImp) o;
 
-      //  stackImp.pop();
-       // stackImp.pop();
-        //stackImp.clear();
-        stackImp.print();
+        if (top != stackImp.top) return false;
+        return Arrays.equals(ints, stackImp.ints);
 
     }
 
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(ints);
+        result = 31 * result + top;
+        return result;
+    }
 
     private Object[] ints;
 
@@ -29,18 +32,16 @@ public class StackImp implements Stack {
     public StackImp(int capacity){
         ints = new Object[capacity];
 
-        //top=-1;
-
     }
 
     @Override
     public void push(Object o) throws StackException {
-        try {
+
+            if (ints.length==top){
+                throw new StackException("Stack is Full");
+            }
             ints[top++]=o;
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -56,9 +57,7 @@ public class StackImp implements Stack {
 
     @Override
     public void clear() {
-        for(int i =0; i<ints.length;i++){
-            ints[i]="_";
-        }
+        ints = new Object[0];
     }
 
     @Override
