@@ -3,35 +3,21 @@ package com.company;
 import java.util.*;
 
 public class StackImp implements Stack {
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {return true;}
 
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        StackImp stackImp = (StackImp) o;
-
-        if (top != stackImp.top) return false;
-        return Arrays.equals(ints, stackImp.ints);
-
+    public static void main(String[] args) throws StackException {
+        StackImp stackImp = new StackImp(5);
+        stackImp.push("sf");
+        stackImp.push("sfa");
+        stackImp.clear();
+        stackImp.print();
     }
-
-    @Override
-    public int hashCode() {
-        int result = Arrays.hashCode(ints);
-        result = 31 * result + top;
-        return result;
-    }
-
     private Object[] ints;
-
+    private Arrays[] arrayses;
     private int top;
 
     public StackImp(int capacity){
         ints = new Object[capacity];
-
+        arrayses = new Arrays[capacity];
     }
 
     @Override
@@ -57,7 +43,7 @@ public class StackImp implements Stack {
 
     @Override
     public void clear() {
-        ints = new Object[0];
+        ints = arrayses;
     }
 
     @Override
@@ -67,4 +53,29 @@ public class StackImp implements Stack {
             System.out.print(obj+" ");
         }
     }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {return true;}
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        StackImp stackImp = (StackImp) o;
+
+        if (top != stackImp.top) return false;
+        return Arrays.equals(ints, stackImp.ints);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(ints);
+        result = 31 * result + top;
+        return result;
+    }
+
 }
