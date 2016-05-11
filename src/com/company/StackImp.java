@@ -12,7 +12,6 @@ public class StackImp implements Stack {
         ints = new Object[capacity];
         arrayses = new Arrays[capacity];
     }
-
     @Override
     public void push(Object o) throws StackException {
 
