@@ -8,7 +8,8 @@ public class StackImp implements Stack {
         StackImp stackImp = new StackImp(5);
         stackImp.push("sf");
         stackImp.push("sfa");
-        stackImp.clear();
+        stackImp.pop();
+        //stackImp.clear();
         stackImp.print();
     }
     private Object[] ints;
@@ -37,7 +38,7 @@ public class StackImp implements Stack {
         }
         top--;
         Object obj = ints[top];
-        ints[top]="_";
+        ints[top]=null;
         return obj;
     }
 
