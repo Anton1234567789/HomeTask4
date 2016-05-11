@@ -4,14 +4,6 @@ import java.util.*;
 
 public class StackImp implements Stack {
 
-    public static void main(String[] args) throws StackException {
-        StackImp stackImp = new StackImp(5);
-        stackImp.push("sf");
-        stackImp.push("sfa");
-        stackImp.pop();
-        //stackImp.clear();
-        stackImp.print();
-    }
     private Object[] ints;
     private Arrays[] arrayses;
     private int top;

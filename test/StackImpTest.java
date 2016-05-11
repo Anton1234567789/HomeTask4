@@ -16,7 +16,6 @@ public class StackImpTest {
       stackImpl.push(new Integer(5));
       stackImpl.push(new Integer(7));
       Assert.assertEquals(stackImpl.pop(), new Integer(7));
-
    }
    @Test
    public void testPop() throws Exception{
